@@ -1,7 +1,7 @@
-#include "functions.h"
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
+#include "./headers/functions.h"
 
 void menu() {
     std::cout << "1: Método de ordenación por selección" << std::endl;

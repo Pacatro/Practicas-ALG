@@ -1,0 +1,1 @@
+add_executable(p1 main.cpp functions.cpp ClaseTiempo.cpp sistemaEcuaciones.cpp)
