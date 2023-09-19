@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/p1.dir/main.cpp.o CMakeFiles/p1.dir/functions.cpp.o CMakeFiles/p1.dir/ClaseTiempo.cpp.o CMakeFiles/p1.dir/sistemaEcuaciones.cpp.o -o p1 
