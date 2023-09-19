@@ -1,7 +1,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
-#include "./headers/functions.h"
+#include <vector>
+#include "./headers/functions.hpp"
 
 void menu() {
     std::cout << "1: Método de ordenación por selección" << std::endl;
@@ -26,5 +27,30 @@ void ordenacionSeleccion(std::vector<int> &v){
         int aux = v[i];
         v[i] = v[minPos];
         v[minPos] = aux;
+    }
+}
+
+bool estaOrdenado(const std::vector <int> &v){
+    if(v.size() <= 1)
+        return true;
+
+    for(int i = 1; i < v.size(); i++){
+        if (v[i] < v[i - 1]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void tiemposOrdenacionSelección(int nMin, int nMax, int repeticiones, int icrement,
+                                std::vector <double> &tiemposReales, std::vector <double> &numeroElementos){
+    for(int i = nMin; i<nMax; i++){
+        for(int j = 0; j<5; j++){
+            std::vector<int> v(i);
+            rellenarVector(v);
+            ordenacionSeleccion(v);
+            //TODO: Calcular tiempos de ejecucion (usar sistema de ecuaciones) y guardar en vectores.
+        }
     }
 }
