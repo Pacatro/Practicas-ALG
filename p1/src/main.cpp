@@ -15,11 +15,11 @@ int main(){
             break;
 
             case 2:
-                matrizCuadrado();
+                //matrizCuadrado();
             break;
 
             case 3:
-                fibonacciRecursivo();
+                //fibonacciRecursivo();
             break;
 
             default:

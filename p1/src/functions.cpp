@@ -1,8 +1,10 @@
-#include <cstdlib>
+//#include <cstdlib>
 #include <iostream>
 #include <ctime>
 #include <vector>
+#include <fstream>
 #include "./headers/functions.hpp"
+#include "ClaseTiempo.cpp"
 
 void menu() {
     std::cout << "1: Método de ordenación por selección" << std::endl;
@@ -13,15 +15,17 @@ void menu() {
 void rellenarVector(std::vector<int> &v){
     std::srand(std::time(nullptr));
     for(int i = 0; i<v.size(); i++){
-        v[i] = std::rand() % 9999999;
+        v[i] = std::rand() % 50;
     }
 }
 
 void ordenacionSeleccion(std::vector<int> &v){
-    for(int i = 0; i<v.size()-2; i++){
-        int minPos = i;
-        for(int j = i+1; j<v.size()-1; j++){
-            if(v[i] < v[minPos])
+    int minPos;
+    
+    for(int i = 0; i<v.size()-1; i++){
+        minPos = i;
+        for(int j = i+1; j<v.size(); j++){
+            if(v[j] < v[minPos])
                 minPos = j;
         }
         int aux = v[i];
@@ -35,22 +39,65 @@ bool estaOrdenado(const std::vector <int> &v){
         return true;
 
     for(int i = 1; i < v.size(); i++){
-        if (v[i] < v[i - 1]) {
+        if (v[i] < v[i - 1]) 
             return false;
-        }
     }
 
     return true;
 }
 
-void tiemposOrdenacionSelección(int nMin, int nMax, int repeticiones, int icrement,
+void tiemposOrdenacionSelección(int nMin, int nMax, int increment, int repeticiones,
                                 std::vector <double> &tiemposReales, std::vector <double> &numeroElementos){
-    for(int i = nMin; i<nMax; i++){
-        for(int j = 0; j<5; j++){
+    double sum = 0;
+
+    for(int i = nMin; i <= nMax; i += increment){
+        for(int j = 0; j<repeticiones; j++){
             std::vector<int> v(i);
             rellenarVector(v);
+            Clock time;
+            time.start();
             ordenacionSeleccion(v);
-            //TODO: Calcular tiempos de ejecucion (usar sistema de ecuaciones) y guardar en vectores.
+            if(time.isStarted() && estaOrdenado(v)){
+                time.stop();
+                sum += time.elapsed();
+            }
         }
+
+        double med = sum / repeticiones;
+        tiemposReales.push_back(med);
+        numeroElementos.push_back(i);
     }
+}
+
+void almacenarFichero(std::vector <double> &tiemposReales, std::vector <double> &numeroElementos){
+    std::ofstream file("tiempoReales.txt");
+
+    if(!file){
+        std::cout << "No se ha podido abrir el fichero." << std::endl;
+        return;
+    }
+
+    for(int i = 0; i < numeroElementos.size() && i < tiemposReales.size(); i++){
+        file << numeroElementos[i] << " --> " << tiemposReales[i] << " microsegundos" << std::endl;
+    }
+
+    file.close();
+}
+
+void ordenacionSeleccion(){
+    std::vector<double> tiemposReales;
+    std::vector<double> numeroElementos;
+    tiemposOrdenacionSelección(1000, 5000, 100, 5, tiemposReales, numeroElementos);
+
+    std::cout << "Vector tiempos (" << tiemposReales.size() << "): ";
+    for (double i : tiemposReales)
+        std::cout << i << " ";
+    std::cout << std::endl;
+
+    std::cout << "Vector elementos (" << numeroElementos.size() << "): ";
+    for (double i : numeroElementos)
+        std::cout << i << " ";
+    std::cout << std::endl;
+
+    almacenarFichero(tiemposReales, numeroElementos);
 }
