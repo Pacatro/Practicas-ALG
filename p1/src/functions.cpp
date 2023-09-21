@@ -84,6 +84,13 @@ void almacenarFichero(std::vector <double> &tiemposReales, std::vector <double> 
     file.close();
 }
 
+void ajusteCuadratico(const std::vector<double> &numeroElementos,
+                      const std::vector<double> &tiemposReales,
+                      std::vector<double> &a){
+    
+    //NI PUTA IDEA.
+}
+
 void ordenacionSeleccion(){
     std::vector<double> tiemposReales;
     std::vector<double> numeroElementos;
