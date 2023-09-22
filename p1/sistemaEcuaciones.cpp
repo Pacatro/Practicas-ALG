@@ -1,4 +1,4 @@
-#include "./headers/sistemaEcuaciones.hpp"
+#include "sistemaEcuaciones.hpp"
 
 
 

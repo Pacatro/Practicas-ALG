@@ -4,7 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
-#include "./headers/functions.hpp"
+#include "functions.hpp"
 #include "ClaseTiempo.cpp"
 
 void menu() {
