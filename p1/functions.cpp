@@ -89,21 +89,15 @@ void ajusteCuadratico(const std::vector<double> &numeroElementos,
                       const std::vector<double> &tiemposReales,
                       std::vector<double> &a){
     
-    //t(n) = a0 + a1*n + a2*n²
-
-    for(int i = 0; i<numeroElementos.size(); i++){
-        //NO se
-        return;
-    }
+    //TODO
 }
 
 double sumatorio(std::vector <double> &n, 
                  std::vector <double> &t, 
                  int expN, int expT){
-    double sumN = 0;
-    double sumT = 0;
-    for(int i = 0; i<n.size(); i++){
-        sumN += std::pow(n[i], expN);
+    double sum = 0;
+    for(int i = 0; i<n.size() && i<t.size(); i++){
+        sum += std::pow(n[i], expN) * std::pow(t[i], expT);
     }
 }
 
