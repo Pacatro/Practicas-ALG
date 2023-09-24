@@ -3,7 +3,6 @@
 
 int main(){
     int choice;
-    std::vector<int> v = {1, 2, 3};
 
     while(true){
         menu();
