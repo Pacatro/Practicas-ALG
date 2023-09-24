@@ -9,17 +9,17 @@
 
 void menu() {
     std::cout << std::endl;
+    std::cout << "**Introduzca cualquier valor para salir**" << std::endl;
+    std::cout << std::endl;
     std::cout << "1: Método de ordenación por selección" << std::endl;
     std::cout << "2: cálculo del cuadrado de una matriz" << std::endl;
     std::cout << "3: Cálculo del término n-ésimo de la sucesión de Fibonacci" << std::endl;
-    std::cout << "Introduzca cualquier valor para salir" << std::endl;
 }
 
 void rellenarVector(std::vector<int> &v){
     std::srand(std::time(nullptr));
-    for(int i = 0; i<v.size(); i++){
+    for(int i = 0; i<v.size(); i++)
         v[i] = std::rand() % 50;
-    }
 }
 
 void ordenacionSeleccion(std::vector<int> &v){
@@ -149,7 +149,7 @@ void almacenarDatosFichero(const std::vector <double> &tiemposReales,
 double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a){
     //t(n) = a0 + a1*n + a2*n²
     double t = a[0] + a[1]*n + a[2]*(n*n);
-    return t;
+    return t / 1e6 / 3153600;
 }
 
 void ordenacionSeleccion(){
@@ -157,7 +157,8 @@ void ordenacionSeleccion(){
     std::vector<double> numeroElementos;
     std::vector<double> a;
     std::vector<double> tiemposEstimados;
-    int nMin, nMax, increment, rep, n;
+    int nMin, nMax, increment, rep;
+    long int n;
     char option;
 
     std::cout << "Introduzca el minimo de elementos: ";
@@ -187,18 +188,11 @@ void ordenacionSeleccion(){
     calcularTiemposEstimadosPolinomico(numeroElementos, a, tiemposEstimados);
     almacenarDatosFichero(tiemposReales, numeroElementos, tiemposEstimados);
 
-    std::cout << "Estimar tiempos para un determinado valor?" << std::endl;
-    std::cout << "Si (S)" << std::endl;
-    std::cout << "No (N)" << std::endl;
-
-    std::cin >> option;
-    std::tolower(option);
-
-    //TODO
-    // switch(option){
-    //     case 's':
-    //         std::cout << "Introduzca numero elementos: ";
-    //         std::cin >> n;
-    // }
-
+    while(true){
+        std::cout << std::endl << "Introduzca numero elementos: ";
+        std::cin >> n;
+        if(n == 0) return;
+        double t = calcularTiempoEstimadoPolinomico(n, a);
+        std::cout << "Para un tamaño " << n << " tardara: " << t  << " años." << std::endl;
+    }
 }
