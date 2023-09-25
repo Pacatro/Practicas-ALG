@@ -152,14 +152,37 @@ double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a
     return t;
 }
 
+void tiemposN(std::vector <double> &a){
+    long int n;
+    char option;
+
+    while(true){
+        std::cout << std::endl << "Introduzca numero elementos: ";
+        std::cin >> n;
+        if(n == 0) return;
+        double t = calcularTiempoEstimadoPolinomico(n, a);
+        double seg = t / 10e6;
+        double min = seg / 60;
+        int days = min / 1440;
+        int years = days / 365;
+        std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " 
+                  << min << " minutos, " << seg << " segundos" << std::endl;
+    }
+}
+
+void rellenarMatriz(const int &n, std::vector <std::vector <double>> &m){
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<n; j++)
+            m[i][j] = 0.95 + static_cast<double>(std::rand()) / RAND_MAX * 0.1;
+    }
+}
+
 void ordenacionSeleccion(){
     std::vector<double> tiemposReales;
     std::vector<double> numeroElementos;
     std::vector<double> a;
     std::vector<double> tiemposEstimados;
     int nMin, nMax, increment, rep;
-    long int n;
-    char option;
 
     std::cout << "Introduzca el minimo de elementos: ";
     std::cin >> nMin;
@@ -172,6 +195,11 @@ void ordenacionSeleccion(){
 
     std::cout << "Introduzca el numero de repeticiones: ";
     std::cin >> rep;
+
+    if(nMax < nMin || nMax == 0 || nMin == 0 || increment == 0 || rep == 0){
+        std::cout << std::endl << "Numeros incorrectos." << std::endl;
+        return;
+    }
 
     std::cout << "Calculando tiempos..." << std::endl;
 
@@ -187,16 +215,32 @@ void ordenacionSeleccion(){
 
     calcularTiemposEstimadosPolinomico(numeroElementos, a, tiemposEstimados);
     almacenarDatosFichero(tiemposReales, numeroElementos, tiemposEstimados);
+    tiemposN(a);
+}
 
-    while(true){
-        std::cout << std::endl << "Introduzca numero elementos: ";
-        std::cin >> n;
-        if(n == 0) return;
-        double t = calcularTiempoEstimadoPolinomico(n, a);
-        double seg = t / 10e6;
-        double min = seg / 60;
-        int days = min / 1440;
-        int years = days / 365;
-        std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " << min << " minutos, " << seg << " segundos" << std::endl;
+void matrizCuadrado(){
+    int option, n;
+
+    std::cout << std::endl << "Introducir orden de la matriz: ";
+    std::cin >> n;
+
+    std::vector<std::vector<double>> m(n, std::vector<double>(n));
+    
+    std::cout << std::endl;
+    std::cout << "1. Rellenar matriz aleatoriamente" << std::endl;
+    std::cout << "2. Insertar datos matriz" << std::endl;
+
+    std::cin >> option;
+
+    switch(option){
+        case 1:
+        break;
+
+        case 2:
+        break;
+
+        default:
+        return;
     }
+
 }

@@ -14,7 +14,7 @@ int main(){
             break;
 
             case 2:
-                //matrizCuadrado();
+                matrizCuadrado();
             break;
 
             case 3:

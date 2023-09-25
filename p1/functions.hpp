@@ -4,6 +4,8 @@
 #include <vector>
 
 void menu();
+
+//Apartado 1
 void rellenarVector(std::vector<int> &v);
 void ordenacionSeleccion(std::vector<int> &v);
 bool estaOrdenado(const std::vector <int> &v);
@@ -14,8 +16,14 @@ double sumatorio(const std::vector <double> &n, const std::vector<double> &t, in
 void calcularTiemposEstimadosPolinomico(const std::vector <double> &numeroElementos, const std::vector <double> &a, std::vector <double> &tiemposEstimados);
 void almacenarDatosFichero(const std::vector <double> &tiemposReales, const std::vector <double> &numeroElementos, const std::vector <double> &tiemposEstimados);
 double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a);
+void tiemposN(std::vector <double> &a);
 void ordenacionSeleccion();
+
+//Apartado 2
+void rellenarMatriz(const int &n, std::vector <std::vector <double>> &m);
 void matrizCuadrado();
+
+//Apartado 3
 void fibonacciRecursivo();
 
 #endif
