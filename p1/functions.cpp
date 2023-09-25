@@ -149,7 +149,7 @@ void almacenarDatosFichero(const std::vector <double> &tiemposReales,
 double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a){
     //t(n) = a0 + a1*n + a2*n²
     double t = a[0] + a[1]*n + a[2]*(n*n);
-    return t / 1e6 / 3153600;
+    return t;
 }
 
 void ordenacionSeleccion(){
@@ -193,6 +193,10 @@ void ordenacionSeleccion(){
         std::cin >> n;
         if(n == 0) return;
         double t = calcularTiempoEstimadoPolinomico(n, a);
-        std::cout << "Para un tamaño " << n << " tardara: " << t  << " años." << std::endl;
+        double seg = t / 10e6;
+        double min = seg / 60;
+        int days = min / 1440;
+        int years = days / 365;
+        std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " << min << " minutos, " << seg << " segundos" << std::endl;
     }
 }
