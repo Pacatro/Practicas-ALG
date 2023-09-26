@@ -1,21 +1,6 @@
 #include "sistemaEcuaciones.hpp"
 
-
-
 using namespace std;
-
-void inicializarInversa(vector < vector < double > >  &inversa);
-void trianguloInferior(vector < vector < double > > &A, vector < vector < double > > &inversa);
-bool eliminarCero(vector < vector < double > > &A, vector < vector < double > > &inversa, unsigned int x);
-void hacerCerosColumna(vector < vector < double > > &A, vector < vector < double > > &inversa, unsigned int x);
-void combinarFilas(vector < vector < double > > &matriz, unsigned int filaOrigen, double factor, unsigned int filaDestino);
-double productoDiagonal(const vector < vector < double > > &matriz);
-void trianguloSuperior(vector < vector < double > > &A, vector < vector < double > > &inversa);
-int eliminarCero2(vector < vector < double > > &A, vector < vector < double > > &inversa, unsigned int x);
-void hacerCerosColumna2(vector < vector < double > > &A, vector < vector < double > > &inversa, unsigned int x);
-void obtenerUnidad(vector < vector < double > > &A, vector < vector < double > > &inversa);
-void multiplicarMatrices(const vector < vector < double > > &m1, const vector < vector < double > > &m2, vector < vector < double > > &producto);
-
 
 void resolverSistemaEcuaciones(vector < vector < double > > A, vector < vector < double > > B, int n, vector < vector < double > > &X)
 {

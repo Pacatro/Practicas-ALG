@@ -20,7 +20,7 @@ void tiemposN(std::vector <double> &a);
 void ordenacionSeleccion();
 
 //Apartado 2
-void rellenarMatriz(const int &n, std::vector <std::vector <double>> &m);
+void rellenarMatriz(std::vector <std::vector <double>> &M);
 void matrizCuadrado();
 
 //Apartado 3
