@@ -21,6 +21,7 @@ void ordenacionSeleccion();
 
 //Apartado 2
 void rellenarMatriz(std::vector <std::vector <double>> &M);
+void tiemposCuadradoMatriz(int nMin, int nMax, int increment, std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes);
 void matrizCuadrado();
 
 //Apartado 3

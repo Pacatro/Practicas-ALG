@@ -226,7 +226,7 @@ void rellenarMatriz(std::vector <std::vector <double>> &M){
 }
 
 void tiemposCuadradoMatriz(int nMin, int nMax, int increment,
-                           std::vector <double> &tiemposReales, std::vector <double> &numeroElementos){
+                           std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes){
 
     for(int i = nMin; i <= nMax; i += increment){
         std::vector<std::vector<double>> M(i, std::vector<double>(i));
@@ -238,16 +238,16 @@ void tiemposCuadradoMatriz(int nMin, int nMax, int increment,
 
         if(time.isStarted()){
             time.stop();
-            tiemposReales.push_back(time.elapsed());
         }
 
-        numeroElementos.push_back(i);
+        tiemposReales.push_back(time.elapsed());
+        numeroOrdenes.push_back(i);
     }
 }
 
 void matrizCuadrado(){
     std::vector<double> tiemposReales;
-    std::vector<double> numeroElementos;
+    std::vector<double> numeroOrdenes;
     std::vector<double> a(4);
     std::vector<double> tiemposEstimados;
     int nMin, nMax, increment, rep;
@@ -266,5 +266,19 @@ void matrizCuadrado(){
         return;
     }
 
-    tiemposCuadradoMatriz(nMin, nMax, increment, tiemposReales, numeroElementos);
+    std::cout << "Calculando tiempos..." << std::endl;
+
+    tiemposCuadradoMatriz(nMin, nMax, increment, tiemposReales, numeroOrdenes);
+    almacenarFichero(tiemposReales, numeroOrdenes);
+    ajusteCuadratico(numeroOrdenes, tiemposReales, a);
+
+    std::cout << std::endl;
+    std::cout << "Incognitas: " << std::endl;
+    std::cout << "a0 = " << a[0] << std::endl;
+    std::cout << "a1 = " << a[1] << std::endl;
+    std::cout << "a2 = " << a[2] << std::endl;
+    std::cout << "a3 = " << a[3] << std::endl;
+
+    //calcularTiemposEstimadosPolinomico(numeroOrdenes, a, tiemposEstimados);
+    //almacenarDatosFichero(tiemposReales, numeroOrdenes, tiemposEstimados);
 }
