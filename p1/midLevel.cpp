@@ -5,11 +5,12 @@
 #include "times.hpp"
 
 void ordenacionSeleccion(){
-    std::vector<double> tiemposReales;
-    std::vector<double> numeroElementos;
-    std::vector<double> a(3);
-    std::vector<double> tiemposEstimados;
+    std::vector <double> tiemposReales;
+    std::vector <double> numeroElementos;
+    std::vector <double> a(3);
+    std::vector <double> tiemposEstimados;
     int nMin, nMax, increment, rep;
+    double coefDet;
 
     std::cout << "Introduzca el minimo de elementos: ";
     std::cin >> nMin;
@@ -41,16 +42,22 @@ void ordenacionSeleccion(){
     std::cout << "a2 = " << a[2] << std::endl;
 
     calcularTiemposEstimadosPolinomico(numeroElementos, a, tiemposEstimados);
+
+    coefDet = calcularCoeficienteDeterminacion(tiemposReales, tiemposEstimados);
+
+    std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
+
     almacenarDatosFichero(tiemposReales, numeroElementos, tiemposEstimados);
     tiemposN(a);
 }
 
 void matrizCuadrado(){
-    std::vector<double> tiemposReales;
-    std::vector<double> numeroOrdenes;
-    std::vector<double> a(4);
-    std::vector<double> tiemposEstimados;
-    int nMin, nMax, increment, rep;
+    std::vector <double> tiemposReales;
+    std::vector <double> numeroOrdenes;
+    std::vector <double> a(4);
+    std::vector <double> tiemposEstimados;
+    int nMin, nMax, increment;
+    double coefDet;
 
     std::cout << "Introduzca el orden minimo de la matriz: ";
     std::cin >> nMin;
@@ -80,5 +87,36 @@ void matrizCuadrado(){
     std::cout << "a3 = " << a[3] << std::endl;
 
     calcularTiemposEstimadosPolinomico(numeroOrdenes, a, tiemposEstimados);
+    
+    coefDet = calcularCoeficienteDeterminacion(tiemposReales, tiemposEstimados);
+
+    std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
+
     almacenarDatosFichero(tiemposReales, numeroOrdenes, tiemposEstimados);
+    tiemposN(a);
+}
+
+void fibonacciRecursivo(){
+    std::vector <double> tiemposReales;
+    std::vector <double> numeroElementos;
+    int nMin, nMax, increment;
+    
+    std::cout << "Introduzca el minimo de elementos: ";
+    std::cin >> nMin;
+
+    std::cout << "Introduzca el maximo de elementos: ";
+    std::cin >> nMax;
+
+    std::cout << "Introduzca el incremento: ";
+    std::cin >> increment;
+
+    if(nMax < nMin || nMax == 0 || nMin == 0 || increment == 0){
+        std::cout << std::endl << "Numeros incorrectos." << std::endl;
+        return;
+    }
+
+    std::cout << "Calculando tiempos..." << std::endl;
+    
+    tiemposFibonacciRecursivo(nMin, nMax, increment, tiemposReales, numeroElementos);
+    almacenarFichero(tiemposReales, numeroElementos);
 }

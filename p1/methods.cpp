@@ -19,3 +19,9 @@ void ordenacionSeleccion(std::vector<int> &v){
 void cuadradoMatriz(std::vector<std::vector<double>> &M, std::vector<std::vector<double>> &C){
     multiplicarMatrices(M, M, C);
 }
+
+int fibonacciRecursivo(int n){
+    if(n <= 1)
+        return 1;
+    return fibonacciRecursivo(n-1) + fibonacciRecursivo(n-2);
+}

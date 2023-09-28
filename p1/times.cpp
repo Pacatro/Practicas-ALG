@@ -7,9 +7,9 @@
 
 void tiemposOrdenacionSelección(int nMin, int nMax, int increment, int repeticiones,
                                 std::vector <double> &tiemposReales, std::vector <double> &numeroElementos){
-    double sum = 0;
 
     for(int i = nMin; i <= nMax; i += increment){
+        double sum = 0;
         for(int j = 0; j<repeticiones; j++){
             std::vector<int> v(i);
             rellenarVector(v);
@@ -55,12 +55,28 @@ void tiemposCuadradoMatriz(int nMin, int nMax, int increment,
     }
 }
 
+void tiemposFibonacciRecursivo(int nMin, int nMax, int increment, 
+                               std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes){
+    for(int i = nMin; i < nMax; i += increment){
+        Clock time;
+        time.start();
+        fibonacciRecursivo(i);
+
+        if(time.isStarted()){
+            time.stop();
+        }
+
+        tiemposReales.push_back(time.elapsed());
+        numeroOrdenes.push_back(i);
+    }
+}
+
 void calcularTiemposEstimadosPolinomico(const std::vector <double> &numeroElementos,
                                         const std::vector <double> &a,
                                         std::vector <double> &tiemposEstimados){
 
-    double t;
     for(int i = 0; i < numeroElementos.size(); i++){
+        double t = 0;
         for(int j = 0; j < a.size(); j++)
             t += a[j] * std::pow(numeroElementos[i], j);          
         tiemposEstimados.push_back(t);
@@ -81,7 +97,7 @@ void tiemposN(std::vector <double> &a){
     char option;
 
     while(true){
-        std::cout << std::endl << "Introduzca numero elementos: ";
+        std::cout << std::endl << "Introduzca n: ";
         std::cin >> n;
         if(n == 0) return;
         double t = calcularTiempoEstimadoPolinomico(n, a);

@@ -5,6 +5,7 @@
 
 void tiemposOrdenacionSelección(int nMin, int nMax, int increment, int repeticiones, std::vector <double> &tiemposReales, std::vector <double> &numeroElementos);
 void tiemposCuadradoMatriz(int nMin, int nMax, int increment, std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes);
+void tiemposFibonacciRecursivo(int nMin, int nMax, int increment, std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes);
 void calcularTiemposEstimadosPolinomico(const std::vector <double> &numeroElementos, const std::vector <double> &a, std::vector <double> &tiemposEstimados);
 double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a);
 void tiemposN(std::vector <double> &a);

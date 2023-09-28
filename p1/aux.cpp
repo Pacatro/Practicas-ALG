@@ -59,6 +59,27 @@ double sumatorio(const std::vector <double> &n,
     return sum;
 }
 
+double media(const std::vector <double> v){
+    double sum = 0;
+    
+    for(int i = 0; i < v.size(); i++)
+        sum += v[i];
+
+    double med = sum / v.size();
+    return med;
+}
+
+double varianza(const std::vector <double> v){
+    double sum = 0;
+    
+    for(int i = 0; i < v.size(); i++)
+        sum += (v[i] - media(v)) * (v[i] - media(v));
+    
+    double var = sum / (v.size() - 1);
+
+    return var;
+}
+
 void almacenarDatosFichero(const std::vector <double> &tiemposReales, 
                            const std::vector <double> &numeroElementos,
                            const std::vector <double> &tiemposEstimados){

@@ -19,7 +19,7 @@ int main(){
             break;
 
             case 3:
-                //fibonacciRecursivo();
+                fibonacciRecursivo();
             break;
 
             default:

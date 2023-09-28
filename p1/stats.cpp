@@ -32,7 +32,9 @@ void ajusteCuadratico(const std::vector<double> &numeroElementos,
 
 double calcularCoeficienteDeterminacion(const std::vector <double> &tiemposReales, 
                                         const std::vector <double> &tiemposEstimados){
-    return 0.0; //TODO
+    
+    double coefDet = varianza(tiemposEstimados) / varianza(tiemposReales);
+    return coefDet;
 }
 
 void ajusteCubico(const std::vector <double> &n, 
