@@ -1,5 +1,6 @@
 #include <iostream>
-#include "functions.hpp"
+#include "midLevel.hpp"
+#include "aux.hpp"
 
 int main(){
     int choice;
