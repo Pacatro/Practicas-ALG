@@ -1,6 +1,7 @@
 #include "methods.hpp"
 #include "sistemaEcuaciones.hpp"
 
+//O(n²)
 void ordenacionSeleccion(std::vector<int> &v){
     int minPos;
     
@@ -16,10 +17,12 @@ void ordenacionSeleccion(std::vector<int> &v){
     }
 }
 
+//O(n²)
 void cuadradoMatriz(std::vector<std::vector<double>> &M, std::vector<std::vector<double>> &C){
     multiplicarMatrices(M, M, C);
 }
 
+//O(2^n)
 int fibonacciRecursivo(int n){
     if(n <= 1)
         return 1;

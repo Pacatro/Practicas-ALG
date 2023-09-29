@@ -8,6 +8,9 @@ void tiemposCuadradoMatriz(int nMin, int nMax, int increment, std::vector <doubl
 void tiemposFibonacciRecursivo(int nMin, int nMax, int increment, std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes);
 void calcularTiemposEstimadosPolinomico(const std::vector <double> &numeroElementos, const std::vector <double> &a, std::vector <double> &tiemposEstimados);
 double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a);
+void calcularTiemposEstimadosExponencial(const std::vector <double> &n, const std::vector <double> &tiemposReales, const std::vector <double> &a, std::vector <double> &tiemposEstimados);
+double calcularTiempoEstimadoExponencial(const double &n, const std::vector <double> &a);
 void tiemposN(std::vector <double> &a);
+void tiemposExponencialN(std::vector <double> &a);
 
 #endif

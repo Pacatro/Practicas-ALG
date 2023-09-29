@@ -98,8 +98,11 @@ void matrizCuadrado(){
 
 void fibonacciRecursivo(){
     std::vector <double> tiemposReales;
-    std::vector <double> numeroElementos;
+    std::vector <double> tiemposEstimados;
+    std::vector <double> n;
+    std::vector <double> a(2);
     int nMin, nMax, increment;
+    double coefDet;
     
     std::cout << "Introduzca el minimo de elementos: ";
     std::cin >> nMin;
@@ -117,6 +120,21 @@ void fibonacciRecursivo(){
 
     std::cout << "Calculando tiempos..." << std::endl;
     
-    tiemposFibonacciRecursivo(nMin, nMax, increment, tiemposReales, numeroElementos);
-    almacenarFichero(tiemposReales, numeroElementos);
+    tiemposFibonacciRecursivo(nMin, nMax, increment, tiemposReales, n);
+    almacenarFichero(tiemposReales, n);
+    ajusteExponencial(n, tiemposReales, a);
+
+    std::cout << std::endl;
+    std::cout << "Incognitas: " << std::endl;
+    std::cout << "a0 = " << a[0] << std::endl;
+    std::cout << "a1 = " << a[1] << std::endl;
+
+    calcularTiemposEstimadosExponencial(n, tiemposReales, a, tiemposEstimados);
+
+    coefDet = calcularCoeficienteDeterminacion(tiemposReales, tiemposEstimados);
+
+    std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
+
+    almacenarDatosFichero(tiemposReales, n, tiemposEstimados);
+    tiemposExponencialN(a);
 }

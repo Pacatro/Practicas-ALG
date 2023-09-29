@@ -42,6 +42,16 @@ void ajusteCubico(const std::vector <double> &n,
                   std::vector <double> &a){
 
     ajusteCuadratico(n, tiemposReales, a);
-
 }
 
+void ajusteExponencial(const std::vector <double> &n, 
+                       const std::vector <double> &tiemposReales, 
+                       std::vector <double> &a){
+    
+    std::vector <double> exp(n.size());
+
+    for(int i = 0; i < n.size(); i++)
+        exp[i] = std::pow(2, n[i]);
+    
+    ajusteCuadratico(exp, tiemposReales, a);
+}

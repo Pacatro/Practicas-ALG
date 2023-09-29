@@ -13,6 +13,7 @@ void tiemposOrdenacionSelección(int nMin, int nMax, int increment, int repetici
         for(int j = 0; j<repeticiones; j++){
             std::vector<int> v(i);
             rellenarVector(v);
+            //std::cout << "Ordenando vector, n = " << i << ", rep = " << j+1 << std::endl;
             Clock time;
             time.start();
             ordenacionSeleccion(v);
@@ -26,7 +27,6 @@ void tiemposOrdenacionSelección(int nMin, int nMax, int increment, int repetici
                 std::cout << "El vector no está ordenado." << std::endl;
                 return;
             }
-
         }
 
         double med = sum / repeticiones;
@@ -42,6 +42,7 @@ void tiemposCuadradoMatriz(int nMin, int nMax, int increment,
         std::vector<std::vector<double>> M(i, std::vector<double>(i));
         std::vector<std::vector<double>> C(i, std::vector<double>(i));
         rellenarMatriz(M);
+        //std::cout << "Calculando cuadrado matriz " << i << "x" << i << std::endl;
         Clock time;
         time.start();
         cuadradoMatriz(M, C);
@@ -58,6 +59,7 @@ void tiemposCuadradoMatriz(int nMin, int nMax, int increment,
 void tiemposFibonacciRecursivo(int nMin, int nMax, int increment, 
                                std::vector <double> &tiemposReales, std::vector <double> &numeroOrdenes){
     for(int i = nMin; i < nMax; i += increment){
+        //std::cout << "Calculando Fibonacci hasta el termino " << i << std::endl;
         Clock time;
         time.start();
         fibonacciRecursivo(i);
@@ -92,6 +94,22 @@ double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a
     return t;
 }
 
+void calcularTiemposEstimadosExponencial(const std::vector <double> &n, 
+                                         const std::vector <double> &tiemposReales, 
+                                         const std::vector <double> &a, 
+                                         std::vector <double> &tiemposEstimados){
+    double t;           
+    for(int i = 0; i < n.size(); i++){
+        t = a[0] + a[1]*std::pow(2, n[i]);
+        tiemposEstimados.push_back(t);
+    }
+}
+
+double calcularTiempoEstimadoExponencial(const double &n, const std::vector <double> &a){
+    double t = a[0] + a[1]*std::pow(2, n);
+    return t;
+}
+
 void tiemposN(std::vector <double> &a){
     long int n;
     char option;
@@ -100,11 +118,29 @@ void tiemposN(std::vector <double> &a){
         std::cout << std::endl << "Introduzca n: ";
         std::cin >> n;
         if(n == 0) return;
-        double t = calcularTiempoEstimadoPolinomico(n, a);
-        double seg = t / 10e6;
-        double min = seg / 60;
-        int days = min / 1440;
-        int years = days / 365;
+        long double t = calcularTiempoEstimadoPolinomico(n, a);
+        long double seg = t / 10e6;
+        long int min = seg / 60;
+        long int days = min / 1440;
+        long int years = days / 365;
+        std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " 
+                  << min << " minutos, " << seg << " segundos" << std::endl;
+    }
+}
+
+void tiemposExponencialN(std::vector <double> &a){
+    long int n;
+    char option;
+
+    while(true){
+        std::cout << std::endl << "Introduzca n: ";
+        std::cin >> n;
+        if(n == 0) return;
+        long double t = calcularTiempoEstimadoExponencial(n, a);
+        long double seg = t / 10e6;
+        long int min = seg / 60;
+        long int days = min / 1440;
+        long int years = days / 365;
         std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " 
                   << min << " minutos, " << seg << " segundos" << std::endl;
     }
