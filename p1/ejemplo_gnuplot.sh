@@ -7,5 +7,5 @@ set output "graficoFibonacci.eps"
 set key right bottom
 set xlabel "Tamano ejemplar"
 set ylabel "Tiempo"
-plot './build/datosFinales.txt' using 1:2 t "Tiempos reales" w l, './build/datosFinales.txt' using 1:3 t "Tiempos estimados" w l, './build/datosFinales.txt' using 1:5 t "Datos columna 5 frente a 1" w l, './build/datosFinales.txt' using 1:6 t "Datos columna 6 frente a 1" w l 
+plot 'datosFinales.txt' using 1:2 t "Tiempos reales", 'datosFinales.txt' using 1:3 t "Tiempos estimados" w l, 'datosFinales.txt' using 1:5 t "Datos columna 5 frente a 1" w l, 'datosFinales.txt' using 1:6 t "Datos columna 6 frente a 1" w l 
 _end_

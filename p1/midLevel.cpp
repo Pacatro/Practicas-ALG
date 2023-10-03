@@ -10,6 +10,7 @@ void ordenacionSeleccion(){
     std::vector <double> a(3);
     std::vector <double> tiemposEstimados;
     int nMin, nMax, increment, rep;
+    long int n;
     double coefDet;
 
     std::cout << "Introduzca el minimo de elementos: ";
@@ -29,7 +30,8 @@ void ordenacionSeleccion(){
         return;
     }
 
-    std::cout << "Calculando tiempos..." << std::endl;
+    //std::cout << "Calculando tiempos..." << std::endl;
+    std::cout << std::endl;
 
     tiemposOrdenacionSelección(nMin, nMax, increment, rep, tiemposReales, numeroElementos);
     almacenarFichero(tiemposReales, numeroElementos);
@@ -48,7 +50,14 @@ void ordenacionSeleccion(){
     std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
 
     almacenarDatosFichero(tiemposReales, numeroElementos, tiemposEstimados);
-    tiemposN(a);
+
+    while(true){
+        std::cout << std::endl << "Introduzca n: ";
+        std::cin >> n;
+        if(n == 0) return;
+        long double t = calcularTiempoEstimadoPolinomico(n, a);
+        tiemposN(n, t);
+    }
 }
 
 void matrizCuadrado(){
@@ -57,6 +66,7 @@ void matrizCuadrado(){
     std::vector <double> a(4);
     std::vector <double> tiemposEstimados;
     int nMin, nMax, increment;
+    long int n;
     double coefDet;
 
     std::cout << "Introduzca el orden minimo de la matriz: ";
@@ -73,7 +83,8 @@ void matrizCuadrado(){
         return;
     }
 
-    std::cout << "Calculando tiempos..." << std::endl;
+    //std::cout << "Calculando tiempos..." << std::endl;
+    std::cout << std::endl;
 
     tiemposCuadradoMatriz(nMin, nMax, increment, tiemposReales, numeroOrdenes);
     almacenarFichero(tiemposReales, numeroOrdenes);
@@ -93,7 +104,14 @@ void matrizCuadrado(){
     std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
 
     almacenarDatosFichero(tiemposReales, numeroOrdenes, tiemposEstimados);
-    tiemposN(a);
+    
+    while(true){
+        std::cout << std::endl << "Introduzca n: ";
+        std::cin >> n;
+        if(n == 0) return;
+        long double t = calcularTiempoEstimadoPolinomico(n, a);
+        tiemposN(n, t);
+    }
 }
 
 void fibonacciRecursivo(){
@@ -102,6 +120,7 @@ void fibonacciRecursivo(){
     std::vector <double> n;
     std::vector <double> a(2);
     int nMin, nMax, increment;
+    long int term;
     double coefDet;
     
     std::cout << "Introduzca el minimo de elementos: ";
@@ -118,7 +137,8 @@ void fibonacciRecursivo(){
         return;
     }
 
-    std::cout << "Calculando tiempos..." << std::endl;
+    //std::cout << "Calculando tiempos..." << std::endl;
+    std::cout << std::endl;
     
     tiemposFibonacciRecursivo(nMin, nMax, increment, tiemposReales, n);
     almacenarFichero(tiemposReales, n);
@@ -136,5 +156,12 @@ void fibonacciRecursivo(){
     std::cout << "Coeficiente de determinacion: " << coefDet << std::endl;
 
     almacenarDatosFichero(tiemposReales, n, tiemposEstimados);
-    tiemposExponencialN(a);
+    
+    while(true){
+        std::cout << std::endl << "Introduzca termino n-esimo: ";
+        std::cin >> term;
+        if(term == 0) return;
+        long double t = calcularTiempoEstimadoExponencial(term, a);
+        tiemposN(term, t);
+    }
 }

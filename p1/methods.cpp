@@ -17,7 +17,7 @@ void ordenacionSeleccion(std::vector<int> &v){
     }
 }
 
-//O(n²)
+//O(n³)
 void cuadradoMatriz(std::vector<std::vector<double>> &M, std::vector<std::vector<double>> &C){
     multiplicarMatrices(M, M, C);
 }

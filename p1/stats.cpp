@@ -4,10 +4,41 @@
 #include <fstream>
 #include <cmath>
 #include "stats.hpp"
-#include "aux.hpp"
 #include "ClaseTiempo.hpp"
 #include "sistemaEcuaciones.hpp"
 #include "methods.hpp"
+
+double sumatorio(const std::vector <double> &n, 
+                 const std::vector <double> &t, 
+                 int expN, int expT){
+    double sum = 0;
+    
+    for(int i = 0; i<n.size() && i<t.size(); i++)
+        sum += std::pow(n[i], expN) * std::pow(t[i], expT);
+
+    return sum;
+}
+
+double media(const std::vector <double> v){
+    double sum = 0;
+    
+    for(int i = 0; i < v.size(); i++)
+        sum += v[i];
+
+    double med = sum / v.size();
+    return med;
+}
+
+double varianza(const std::vector <double> v){
+    double sum = 0;
+    
+    for(int i = 0; i < v.size(); i++)
+        sum += (v[i] - media(v)) * (v[i] - media(v));
+    
+    double var = sum / (v.size() - 1);
+
+    return var;
+}
 
 void ajusteCuadratico(const std::vector<double> &numeroElementos,
                       const std::vector<double> &tiemposReales,

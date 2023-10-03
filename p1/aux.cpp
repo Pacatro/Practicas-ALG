@@ -26,7 +26,7 @@ bool estaOrdenado(const std::vector <int> &v){
         return true;
 
     for(int i = 1; i < v.size(); i++){
-        if (v[i] < v[i - 1]) 
+        if (v[i] < v[i-1]) 
             return false;
     }
 
@@ -46,38 +46,6 @@ void almacenarFichero(const std::vector <double> &tiemposReales,
         file << numeroElementos[i] << " " << tiemposReales[i] << std::endl;
 
     file.close();
-}
-
-double sumatorio(const std::vector <double> &n, 
-                 const std::vector <double> &t, 
-                 int expN, int expT){
-    double sum = 0;
-    
-    for(int i = 0; i<n.size() && i<t.size(); i++)
-        sum += std::pow(n[i], expN) * std::pow(t[i], expT);
-
-    return sum;
-}
-
-double media(const std::vector <double> v){
-    double sum = 0;
-    
-    for(int i = 0; i < v.size(); i++)
-        sum += v[i];
-
-    double med = sum / v.size();
-    return med;
-}
-
-double varianza(const std::vector <double> v){
-    double sum = 0;
-    
-    for(int i = 0; i < v.size(); i++)
-        sum += (v[i] - media(v)) * (v[i] - media(v));
-    
-    double var = sum / (v.size() - 1);
-
-    return var;
 }
 
 void almacenarDatosFichero(const std::vector <double> &tiemposReales, 
