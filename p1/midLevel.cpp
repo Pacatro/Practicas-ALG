@@ -38,10 +38,7 @@ void ordenacionSeleccion(){
     ajusteCuadratico(numeroElementos, tiemposReales, a);
 
     std::cout << std::endl;
-    std::cout << "Incognitas: " << std::endl;
-    std::cout << "a0 = " << a[0] << std::endl;
-    std::cout << "a1 = " << a[1] << std::endl;
-    std::cout << "a2 = " << a[2] << std::endl;
+    std::cout << "t = " << a[0] << " + " << a[1] << "*n + " << a[2] << "*n²" << std::endl;
 
     calcularTiemposEstimadosPolinomico(numeroElementos, a, tiemposEstimados);
 
@@ -91,11 +88,7 @@ void matrizCuadrado(){
     ajusteCubico(numeroOrdenes, tiemposReales, a);
 
     std::cout << std::endl;
-    std::cout << "Incognitas: " << std::endl;
-    std::cout << "a0 = " << a[0] << std::endl;
-    std::cout << "a1 = " << a[1] << std::endl;
-    std::cout << "a2 = " << a[2] << std::endl;
-    std::cout << "a3 = " << a[3] << std::endl;
+    std::cout << "t = " << a[0] << " + " << a[1] << "*n + " << a[2] << "*n² + " << a[3] << "*n³" << std::endl;
 
     calcularTiemposEstimadosPolinomico(numeroOrdenes, a, tiemposEstimados);
     
@@ -145,9 +138,8 @@ void fibonacciRecursivo(){
     ajusteExponencial(n, tiemposReales, a);
 
     std::cout << std::endl;
-    std::cout << "Incognitas: " << std::endl;
-    std::cout << "a0 = " << a[0] << std::endl;
-    std::cout << "a1 = " << a[1] << std::endl;
+    std::cout << "t = " << a[0] << " + " << a[1] << "*2^n" << std::endl;
+
 
     calcularTiemposEstimadosExponencial(n, tiemposReales, a, tiemposEstimados);
 

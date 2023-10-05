@@ -124,7 +124,7 @@ void tiemposN(const long int &n, const double &t){
     hour = hour%60;
     days = days%365;
 
-    std::cout << "Para un tamaño " << n << " tardara: " << years << " años, " << days << " dias, " 
+    std::cout << "Para n = " << n << " tardara: " << years << " años, " << days << " dias, " 
                 << hour << " horas, " << min << " minutos, " << seg << " segundos" << std::endl;
 
 }
