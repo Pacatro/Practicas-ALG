@@ -8,6 +8,7 @@ int main(){
     while(true){
         menu();
         std::cin >> choice;
+        std::cout << std::endl;
 
         switch(choice){
             case 1:
