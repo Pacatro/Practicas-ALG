@@ -4,7 +4,7 @@
 #include "aux.hpp"
 
 int main(){
-    std::vector <int> v(5);
+    std::vector <int> v(50);
     rellenarVector(v);
 
     std::cout << "Vector sin ordenar: ";
@@ -12,10 +12,12 @@ int main(){
 
     std::cout << std::endl;
 
-    quicksort(0, v.size()-1, v);
+    quicksortMejorado(0, v.size()-1, 5, v);
 
     if(!estaOrdenado(v)){
         std::cout << "No esta ordenado." << std::endl;
+        std::cout << "Vector: ";
+        printVect(v);
         return -1;
     }
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include "aux.hpp"
+#include "methods.hpp"
 
 void rellenarVector(std::vector<int> &v){
     std::srand(std::time(nullptr));
@@ -24,4 +25,21 @@ bool estaOrdenado(const std::vector <int> &v){
     }
 
     return true;
+}
+
+int getMediana(int n, const std::vector <int> &v){
+    std::vector <int> med(n);
+
+    for(int i = 0; i < n; i++){
+        med.push_back(v[i]);
+    }
+
+    ordenacionSeleccion(med);
+
+    if(!estaOrdenado(med)){
+        std::cout << "No esta ordenado." << std::endl;
+        return -1;
+    }
+
+    return med[med.size()/2];
 }
