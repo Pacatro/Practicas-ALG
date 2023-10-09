@@ -35,7 +35,7 @@ double varianza(const std::vector <double> v){
     for(int i = 0; i < v.size(); i++)
         sum += (v[i] - media(v)) * (v[i] - media(v));
     
-    double var = sum / (v.size() - 1);
+    double var = sum / (v.size());
 
     return var;
 }

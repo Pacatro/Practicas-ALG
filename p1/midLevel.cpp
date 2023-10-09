@@ -49,7 +49,7 @@ void ordenacionSeleccion(){
     almacenarDatosFichero(tiemposReales, numeroElementos, tiemposEstimados);
 
     while(true){
-        std::cout << std::endl << "Introduzca n: ";
+        std::cout << std::endl << "Introduzca n (0 para salir): ";
         std::cin >> n;
         if(n == 0) return;
         long double t = calcularTiempoEstimadoPolinomico(n, a);
@@ -99,7 +99,7 @@ void matrizCuadrado(){
     almacenarDatosFichero(tiemposReales, numeroOrdenes, tiemposEstimados);
     
     while(true){
-        std::cout << std::endl << "Introduzca n: ";
+        std::cout << std::endl << "Introduzca n (0 para salir): ";
         std::cin >> n;
         if(n == 0) return;
         long double t = calcularTiempoEstimadoPolinomico(n, a);
@@ -150,7 +150,7 @@ void fibonacciRecursivo(){
     almacenarDatosFichero(tiemposReales, n, tiemposEstimados);
     
     while(true){
-        std::cout << std::endl << "Introduzca termino n-esimo: ";
+        std::cout << std::endl << "Introduzca termino n-esimo (0 para salir): ";
         std::cin >> term;
         if(term == 0) return;
         long double t = calcularTiempoEstimadoExponencial(term, a);
