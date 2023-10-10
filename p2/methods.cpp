@@ -45,15 +45,17 @@ void ordenacionSeleccion(std::vector<int> &v){
     }
 }
 
-void quicksortMejorado(int iz, int de, int n, std::vector <int> &v){
+//Si no se nota mejora, usar el quicksort de la stl en vez de la ordenación de seleccion
+void quicksortMejorado(int iz, int de, int median, int minN, std::vector <int> &v){
     int i = iz;
     int j = de;
     int x;
 
-    if(v.size() < 1000)
+    if(v.size() < minN)
         x = v[(iz+de)/2];
-    else
-        x = getMediana(n, v);
+    else{
+        //NO SE COMO POLLAS HACER ESTO (INUTIL)
+    }
 
     do {
         while(v[i] < x)
@@ -72,8 +74,8 @@ void quicksortMejorado(int iz, int de, int n, std::vector <int> &v){
     } while(i < j);
 
     if(iz < j)
-        quicksortMejorado(iz, j, n, v);
+        quicksortMejorado(iz, j, median, minN, v);
 
     if(i < de)
-        quicksortMejorado(i, de, n, v);
+        quicksortMejorado(i, de, median, minN, v);
 }

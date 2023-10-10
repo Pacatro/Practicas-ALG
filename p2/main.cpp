@@ -1,30 +1,65 @@
 #include <iostream>
 #include <vector>
-#include "methods.hpp"
+#include <getopt.h>
+#include "midLevel.hpp"
 #include "aux.hpp"
 
-int main(){
-    std::vector <int> v(50);
-    rellenarVector(v);
+int main(int argc, char** argv ){
+    int command, nMin, nMax, increment, rep, median, minN;
+    bool hFlag = false;
 
-    std::cout << "Vector sin ordenar: ";
-    printVect(v);
+    static struct option long_options[] = {
+        {"min", required_argument, NULL, 'm'},
+        {"max", required_argument, NULL, 'M'},
+        {"increment", required_argument, NULL, 'i'},
+        {"repetitions", required_argument, NULL, 'r'},
+        {"median", required_argument, NULL, 'e'},
+        {"minelements", required_argument, NULL, 'n'},
+        {"help", no_argument, NULL, 'h'},
+        {0, 0, 0}
+    };
 
-    std::cout << std::endl;
+    while((command = getopt_long(argc, argv, "hm:M:i:r:e:n:", long_options, nullptr)) != -1){   
+        switch(command){
+            case 'm':
+                nMin = std::stoi(optarg);
+            break;
 
-    quicksortMejorado(0, v.size()-1, 5, v);
+            case 'M':
+                nMax = std::stoi(optarg);
+            break;
 
-    if(!estaOrdenado(v)){
-        std::cout << "No esta ordenado." << std::endl;
-        std::cout << "Vector: ";
-        printVect(v);
-        return -1;
+            case 'i':
+                increment = std::stoi(optarg);
+            break;
+
+            case 'r':
+                rep = std::stoi(optarg);
+            break;
+
+            case 'e':
+                median = std::stoi(optarg);
+            break;
+
+            case 'n':
+                minN = std::stoi(optarg);
+            break;
+
+            case 'h':
+                hFlag = true;
+            break;
+
+            default:
+                abort();
+        }
     }
 
-    std::cout << "Vector ordenado: ";
-    printVect(v);
+    if(hFlag){
+        printHelp();
+        return 0;
+    }
 
-    std::cout << std::endl;
+    comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
 
     return 0;
 }
