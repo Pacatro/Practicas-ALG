@@ -1,8 +1,8 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
-#include "aux.hpp"
-#include "methods.hpp"
+#include "headers/aux.hpp"
+#include "headers/methods.hpp"
 
 void rellenarVector(std::vector<int> &v){
     std::srand(std::time(nullptr));
@@ -29,11 +29,24 @@ bool estaOrdenado(const std::vector <int> &v){
 }
 
 int getMedian(int n, const std::vector <int> &v){
-    std::vector <int> med(n);
+    std::vector <int> med;
 
-    std::cout << "hola";
-    for(int i = 0; i < n; i++)
-        med[i] = v[i];
+    std::srand(std::time(nullptr));
+
+    int limInf, limSup;
+
+    int i = rand() % v.size();
+
+    if(i+n > v.size()){
+        limInf = i-n;
+        limSup = i;
+    } else {
+        limInf = i;
+        limSup = i+n;
+    }
+
+    for(int j = limInf; j < limSup; j++)
+        med.push_back(v[j]);
 
     ordenacionSeleccion(med);
 

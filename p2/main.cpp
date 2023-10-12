@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <getopt.h>
-#include "midLevel.hpp"
-#include "aux.hpp"
+#include "headers/midLevel.hpp"
+#include "headers/aux.hpp"
 
 int main(int argc, char** argv ){
     int command, nMin, nMax, increment, rep, median, minN;
@@ -59,7 +59,8 @@ int main(int argc, char** argv ){
         return 0;
     }
 
-    comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
+    //comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
+    comparacionVariantesQuicksort(100, 200, 10, 2, 3, 2);
 
     return 0;
 }

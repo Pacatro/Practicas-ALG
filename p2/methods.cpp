@@ -1,6 +1,7 @@
 #include <vector>
-#include "methods.hpp"
-#include "aux.hpp"
+#include <iostream>
+#include "headers/methods.hpp"
+#include "headers/aux.hpp"
 
 void quicksort(int iz, int de, std::vector <int> &v){
     int i = iz;
@@ -51,10 +52,10 @@ void quicksortMejorado(int iz, int de, int median, int minN, std::vector <int> &
     int j = de;
     int x;
 
-    if(v.size() < minN)
+    if((de-iz) < minN)
         x = v[(iz+de)/2];
     else{
-        //NO SE COMO POLLAS HACER ESTO (INUTIL)
+        x = getMedian(median, v);
     }
 
     do {
