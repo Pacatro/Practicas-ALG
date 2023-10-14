@@ -59,8 +59,7 @@ int main(int argc, char** argv ){
         return 0;
     }
 
-    //comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
-    comparacionVariantesQuicksort(100, 200, 10, 2, 3, 2);
+    comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
 
     return 0;
 }

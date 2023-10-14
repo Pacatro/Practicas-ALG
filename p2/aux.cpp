@@ -10,7 +10,7 @@ void rellenarVector(std::vector<int> &v){
         v[i] = std::rand() % 9999999+1;
 }
 
-void printVector(std::vector<int> &v){
+void printVector(std::vector<double> &v){
     for(int i = 0; i<v.size(); i++)
         std::cout << v[i] << " ";
     std::cout << std::endl;
