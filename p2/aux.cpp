@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
+#include <fstream>
 #include "headers/aux.hpp"
 #include "headers/methods.hpp"
 
@@ -28,36 +29,35 @@ bool estaOrdenado(const std::vector <int> &v){
     return true;
 }
 
-int getMedian(int n, const std::vector <int> &v){
-    std::vector <int> med;
+void almacenarFichero(const std::vector <double> &tiemposRealesQS1, 
+                      const std::vector <double> &tiemposRealesQS2, 
+                      const std::vector <double> &numeroElementos){
+    std::ofstream file("tiemposReales.txt");
 
-    std::srand(std::time(nullptr));
-
-    int limInf, limSup;
-
-    int i = rand() % v.size();
-
-    if(i+n > v.size()){
-        limInf = i-n;
-        limSup = i;
-    } else {
-        limInf = i;
-        limSup = i+n;
+    if(!file){
+        std::cout << "No se ha podido abrir el fichero." << std::endl;
+        return;
     }
 
-    for(int j = limInf; j < limSup; j++)
-        med.push_back(v[j]);
+    for(int i = 0; i < numeroElementos.size(); i++)
+        file << numeroElementos[i] << " " << tiemposRealesQS1[i] << " " << tiemposRealesQS2[i] << std::endl;
 
-    ordenacionSeleccion(med);
+    file.close();
+}
 
-    if(!estaOrdenado(med)){
-        std::cout << "No esta ordenado." << std::endl;
-        return -1;
-    }
+double mejora(const std::vector <double> &tiemposRealesQS1, const std::vector <double> &tiemposRealesQS2){
+    double sumQS1 = 0, sumQS2 = 0;
 
-    int median = med[med.size()/2];
+    for(int e : tiemposRealesQS1)
+        sumQS1+=e;
 
-    return median;
+    for(int e : tiemposRealesQS2)
+        sumQS2+=e;
+
+    double medQS1 = sumQS1 / tiemposRealesQS1.size();
+    double medQS2 = sumQS2 / tiemposRealesQS2.size();
+
+    return medQS1/medQS2;
 }
 
 void printHelp(){

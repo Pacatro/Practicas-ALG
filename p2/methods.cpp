@@ -31,12 +31,12 @@ void quicksort(int iz, int de, std::vector <int> &v){
         quicksort(i, de, v);
 }
 
-void ordenacionSeleccion(std::vector<int> &v){
+void ordenacionSeleccion(std::vector<int> &v, int min, int max){
     int minPos;
     
-    for(int i = 0; i<v.size()-1; i++){
+    for(int i = min; i < max-1; i++){
         minPos = i;
-        for(int j = i+1; j<v.size(); j++){
+        for(int j = i+1; j < max; j++){
             if(v[j] < v[minPos])
                 minPos = j;
         }
@@ -52,11 +52,14 @@ void quicksortMejorado(int iz, int de, int median, int minN, std::vector <int> &
     int j = de;
     int x;
 
-    if((de-iz) < minN)
-        x = v[(iz+de)/2];
-    else{
-        x = getMedian(median, v);
+    if((de-iz) > minN){
+        int z = (iz+de)/2;
+        z -= median/2;
+        ordenacionSeleccion(v, z, z+median);
+        //quicksort(z, z+median, v);
     }
+
+    x = v[(iz+de)/2];
 
     do {
         while(v[i] < x)

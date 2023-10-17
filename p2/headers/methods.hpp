@@ -4,7 +4,7 @@
 #include <vector>
 
 void quicksort(int iz, int de, std::vector <int> &v);
-void ordenacionSeleccion(std::vector<int> &v);
+void ordenacionSeleccion(std::vector<int> &v, int iz, int de);
 void quicksortMejorado(int iz, int de, int median, int minN, std::vector <int> &v);
 
 #endif

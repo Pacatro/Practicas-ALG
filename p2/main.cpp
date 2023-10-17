@@ -5,7 +5,7 @@
 #include "headers/aux.hpp"
 
 int main(int argc, char** argv ){
-    int command, nMin, nMax, increment, rep, median, minN;
+    int command, nMin, nMax, increment, rep, nMedian, minN;
     bool hFlag = false;
 
     static struct option long_options[] = {
@@ -13,7 +13,7 @@ int main(int argc, char** argv ){
         {"max", required_argument, NULL, 'M'},
         {"increment", required_argument, NULL, 'i'},
         {"repetitions", required_argument, NULL, 'r'},
-        {"median", required_argument, NULL, 'e'},
+        {"nmedian", required_argument, NULL, 'e'},
         {"minelements", required_argument, NULL, 'n'},
         {"help", no_argument, NULL, 'h'},
         {0, 0, 0}
@@ -38,7 +38,7 @@ int main(int argc, char** argv ){
             break;
 
             case 'e':
-                median = std::stoi(optarg);
+                nMedian = std::stoi(optarg);
             break;
 
             case 'n':
@@ -59,7 +59,7 @@ int main(int argc, char** argv ){
         return 0;
     }
 
-    comparacionVariantesQuicksort(nMin, nMax, increment, rep, median, minN);
+    comparacionVariantesQuicksort(nMin, nMax, increment, rep, nMedian, minN);
 
     return 0;
 }

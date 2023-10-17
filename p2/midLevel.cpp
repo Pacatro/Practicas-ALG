@@ -13,6 +13,7 @@ void comparacionVariantesQuicksort(int nMin, int nMax, int incremento,
     tiemposOrdenacionVariantesQuicksort(nMin, nMax, incremento, repeticiones, nMediana, nElementosMinimo, 
                                         tiemposRealesQS1, tiemposRealesQS2, numeroElementos);
 
-    printVector(tiemposRealesQS1);
-    printVector(tiemposRealesQS2);
+    almacenarFichero(tiemposRealesQS1, tiemposRealesQS2, numeroElementos);
+
+    std::cout << "Mejora: " << mejora(tiemposRealesQS1, tiemposRealesQS2) << std::endl;
 }
