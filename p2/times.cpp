@@ -20,9 +20,8 @@ void tiemposOrdenacionVariantesQuicksort(int nMin, int nMax, int incremento, int
             Clock time1;
             time1.start();
             
-            if(!estaOrdenado(v)){
+            if(!estaOrdenado(v))
                 quicksort(0, v.size()-1, v);
-            }
 
             if(time1.isStarted()){
                 time1.stop();
@@ -34,15 +33,13 @@ void tiemposOrdenacionVariantesQuicksort(int nMin, int nMax, int incremento, int
             Clock time2;
             time2.start();
             
-            if(!estaOrdenado(v)){
+            if(!estaOrdenado(v))
                 quicksortMejorado(0, v.size()-1, nMediana, nElementosMinimo, v);
-            }
 
             if(time2.isStarted()){
                 time2.stop();
                 sum2 += time2.elapsed();
             }
-            
         }
 
         double med1 = sum1 / repeticiones;
