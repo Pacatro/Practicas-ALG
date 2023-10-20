@@ -15,5 +15,5 @@ void comparacionVariantesQuicksort(int nMin, int nMax, int incremento,
 
     almacenarFichero(tiemposRealesQS1, tiemposRealesQS2, numeroElementos);
 
-    std::cout << "Mejora: " << mejora(tiemposRealesQS1, tiemposRealesQS2) << std::endl;
+    std::cout << std::endl << "Mejora: " << mejora(tiemposRealesQS1, tiemposRealesQS2) << std::endl;
 }
