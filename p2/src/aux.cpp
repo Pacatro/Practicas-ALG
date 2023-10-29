@@ -57,7 +57,7 @@ double mejora(const std::vector <double> &tiemposRealesQS1, const std::vector <d
     double medQS1 = sumQS1 / tiemposRealesQS1.size();
     double medQS2 = sumQS2 / tiemposRealesQS2.size();
 
-    return medQS1/medQS2;
+    return medQS2/medQS1;
 }
 
 void printHelp(){
