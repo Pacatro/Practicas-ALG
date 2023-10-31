@@ -10,10 +10,11 @@ int main(){
     while(true){
         menu();
         std::cin >> opt;
+        std::cout << std::endl;
 
         switch(opt){
             case 1: 
-                std::cout << "1" << std::endl;
+                changeProblem();
             break;
 
             case 2:
@@ -24,4 +25,6 @@ int main(){
                 return 0;
         }
     }
+
+    return 0;
 }

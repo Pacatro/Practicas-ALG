@@ -21,11 +21,11 @@ class Material
     {
     	return _etiqueta;
     };
-    int getVolumen() const
+    float getVolumen() const
     {
     	return _volumen;
     };
-    int getPrecio() const
+    float getPrecio() const
     {
     	return _precio;
     };

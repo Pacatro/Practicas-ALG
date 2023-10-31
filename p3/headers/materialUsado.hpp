@@ -9,6 +9,7 @@ class MaterialUsado {
 
 
     public:
+    MaterialUsado(){};
     MaterialUsado(Material m, float volumenUsado)
     {
     	_m = m;
