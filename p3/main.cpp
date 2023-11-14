@@ -18,13 +18,11 @@ int main(){
             break;
 
             case 2:
-                std::cout << "2" << std::endl;
+                backpackProblem();
             break;
 
-            case 3:
+            default:
                 return 0;
         }
     }
-
-    return 0;
 }
