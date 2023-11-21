@@ -48,15 +48,6 @@ void cambio(int cantidad, std::vector <Moneda> &sistemaMonetario, std::vector<st
 void obtenerSolución(std::vector<std::vector <int>> &matrizEstados, 
                      std::vector <Moneda> &sistemaMonetario, 
                      std::vector<int> &solucion){
-    // for(int i = 0; i < matrizEstados.size(); i++){
-    //     for(int j = 0; j < matrizEstados[i].size(); j++){
-    //         if(matrizEstados[i][j] == matrizEstados[i-1][j])
-    //             i--;
-    //         if(matrizEstados[i][j] == 1 + matrizEstados[i][j-sistemaMonetario[i].getValor()])
-    //             j -= sistemaMonetario[i].getValor();
-    //     }
-    // }
-
     int i = matrizEstados.size()-1;
     int j = matrizEstados[0].size()-1;
 
