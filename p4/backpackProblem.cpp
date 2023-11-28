@@ -63,7 +63,7 @@ void obtenerSolucion(std::vector<std::vector <double>>& matrizEstados,
             i--;
         else {
             j -= materiales[i].getVolumen();
-            //solucion[i].setMaterial(materiales[i]);
+            solucion[i].setMaterial(materiales[i]);
             solucion[i].setVolumenUsado(materiales[i].getVolumen());
             i--;
         }
@@ -71,7 +71,7 @@ void obtenerSolucion(std::vector<std::vector <double>>& matrizEstados,
 
     if(i == 0 && matrizEstados[i][j] != 0){
         solucion[0].setVolumenUsado(materiales[0].getVolumen());
-        //solucion[0].setMaterial(materiales[0]);
+        solucion[0].setMaterial(materiales[0]);
     }
 }
 
