@@ -54,11 +54,14 @@ void obtenerSolución(std::vector<std::vector <int>> &matrizEstados,
     while(j != 0 && i != 0){
         if(matrizEstados[i][j] == matrizEstados[i-1][j])
             i--;
-        if(matrizEstados[i][j] == 1 + matrizEstados[i][j-sistemaMonetario[i].getValor()]){
+        else {
             j -= sistemaMonetario[i].getValor();
             solucion[i]++;
         }
     }
+
+    if(i == 0 && matrizEstados[i][j] != 0)
+        solucion[0] = matrizEstados[i][j];
 }
 
 void escribirSolucion(std::vector <int> &solucion, std::vector <Moneda> &sistemaMonetario){
