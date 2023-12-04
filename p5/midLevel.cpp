@@ -3,6 +3,8 @@
 
 #include "./headers/midLevel.hpp"
 #include "./headers/backtracking.hpp"
+#include "./headers/lasVegas.hpp"
+#include "./headers/common.hpp"
 #include "./headers/ClaseTiempo.hpp"
 
 void nReinasBacktracking() {
@@ -11,19 +13,22 @@ void nReinasBacktracking() {
     std::cin >> n;
 
     if(n <= 0) {
-        std::cout << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << "El valor de n deber ser > 0" << std::endl;
         return;
     }
 
     std::vector<std::vector<int>> soluciones;
 
-    Clock time();
-    
+    Clock time;
+    time.start();
 
     nReinasBacktracking(n, soluciones);
 
+    if(time.isStarted()) time.stop();
+
     std::cout << std::endl << "Soluciones:" << std::endl;
     escribirSoluciones(soluciones);
+    std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }
 
 void nReinasBacktracking2() {
@@ -32,18 +37,49 @@ void nReinasBacktracking2() {
     std::cin >> n;
 
     if(n <= 0) {
-        std::cout << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << "El valor de n deber ser > 0" << std::endl;
         return;
     }
 
     std::vector<int> solucion(n);
 
+    Clock time;
+    time.start();
+
     nReinasBacktracking(n, solucion);
+
+    if(time.isStarted()) time.stop();
 
     std::cout << std::endl << "Solucion: ";
     escribirSolucion(solucion);
+    std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }
 
 void nReinasLasVegas() {
-    return;
+    int n;
+    std::cout << std::endl << "Introduzca el numero de reinas: ";
+    std::cin >> n;
+
+    if(n <= 0) {
+        std::cerr << "El valor de n deber ser > 0" << std::endl;
+        return;
+    }
+
+    std::vector<int> solucion(n);
+
+    Clock time;
+    time.start();
+
+    bool success = nReinasLasVegas(n, solucion);
+
+    if(time.isStarted()) time.stop();
+
+    if(!success) {
+        std::cerr << std::endl << "No se ha encontrado ninguna solucion para n = " << n << std::endl;
+        return;
+    }
+
+    std::cout << std::endl << "Solucion: ";
+    escribirSolucion(solucion);
+    std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }

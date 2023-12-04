@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "./headers/backtracking.hpp"
-#include "./headers/aux.hpp"
+#include "./headers/common.hpp"
 
 void nReinasBacktracking(int n, std::vector<std::vector<int>> &soluciones) {
     std::vector<int> x(n);
@@ -26,16 +26,6 @@ void nReinasBacktracking(int n, std::vector<std::vector<int>> &soluciones) {
     }
 }
 
-void escribirSoluciones(std::vector<std::vector<int>> &soluciones) {
-    for(int i = 0; i < soluciones.size(); i++) {
-        std::cout << "[ ";
-        for(int j = 0; j < soluciones[i].size(); j++)
-            std::cout << soluciones[i][j] << " ";
-
-        std::cout << "]" << std::endl;
-    }
-}
-
 void nReinasBacktracking(int n, std::vector<int> &solucion) {
     solucion[0] = -1;
     int k = 0;
@@ -55,11 +45,4 @@ void nReinasBacktracking(int n, std::vector<int> &solucion) {
             }
         } else k--;
     }
-}
-
-void escribirSolucion(std::vector<int> &solucion) {
-    std::cout << "[ ";
-    for(int i = 0; i < solucion.size(); i++)
-        std::cout << solucion[i] << " ";
-    std::cout << "]" << std::endl;
 }

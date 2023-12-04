@@ -1,11 +1,14 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 #include "./headers/backtracking.hpp"
 #include "./headers/lasVegas.hpp"
 #include "./headers/midLevel.hpp"
-#include "./headers/aux.hpp"
+#include "./headers/common.hpp"
 
 int main() {
+    std::srand(std::time(0));
     int opt;
 
     do {
