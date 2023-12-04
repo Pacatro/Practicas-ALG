@@ -2,14 +2,13 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "./headers/backtracking.hpp"
-#include "./headers/lasVegas.hpp"
+#include "./headers/methods.hpp"
 #include "./headers/midLevel.hpp"
 #include "./headers/common.hpp"
 
 int main() {
     std::srand(std::time(0));
-    int opt;
+    unsigned int opt;
 
     do {
         menu();
@@ -28,8 +27,12 @@ int main() {
             case 3:
                 nReinasLasVegas();
             break;
+
+            case 4:
+                monteCarlo();
+            break;
         }
-    } while (opt > 0 && opt != 4);
+    } while (opt > 0 && opt != 5);
 
     return EXIT_SUCCESS;
 }

@@ -4,5 +4,6 @@
 void nReinasBacktracking();
 void nReinasBacktracking2();
 void nReinasLasVegas();
+void monteCarlo();
 
 #endif

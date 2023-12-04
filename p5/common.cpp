@@ -8,7 +8,8 @@ void menu() {
     std::cout << "1. Backtracking con todas las soluciones." << std::endl;
     std::cout << "2. Backtracking con una solucion." << std::endl;
     std::cout << "3. Las Vegas." << std::endl;
-    std::cout << "4. Salir." << std::endl;
+    std::cout << "4. Verficacion de producto de matrices con Montecarlo." << std::endl;
+    std::cout << "5. Salir." << std::endl;
 }
 
 bool lugar(int k, std::vector<int> &x) {
@@ -35,4 +36,16 @@ void escribirSolucion(std::vector<int> &solucion) {
     for(int i = 0; i < solucion.size(); i++)
         std::cout << solucion[i] << " ";
     std::cout << "]" << std::endl;
+}
+
+void fillMatrix(std::vector<std::vector<int>> &m) {
+    for(int i = 0; i < m.size(); i++) {
+        for(int j = 0; j < m[i].size(); j++)
+            m[i][j] = (std::rand() % 3) - 1;
+    }
+}
+
+void fillVector(std::vector<int> &x) {
+    for(int i = 0; i < x.size(); i++)
+        x[i] = std::rand() % 2;
 }
