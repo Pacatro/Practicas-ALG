@@ -3,6 +3,7 @@
 
 #include "./headers/midLevel.hpp"
 #include "./headers/backtracking.hpp"
+#include "./headers/ClaseTiempo.hpp"
 
 void nReinasBacktracking() {
     int n;
@@ -15,6 +16,9 @@ void nReinasBacktracking() {
     }
 
     std::vector<std::vector<int>> soluciones;
+
+    Clock time();
+    
 
     nReinasBacktracking(n, soluciones);
 
