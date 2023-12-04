@@ -65,12 +65,11 @@ void nReinasLasVegas() {
         return;
     }
 
-    bool success = false;
-    int trys = 0;
-
     Clock time;
     time.start();
 
+    int trys = 0;
+    bool success = false;
     std::vector<int> solucion(n);
     
     while(!success){
@@ -82,7 +81,7 @@ void nReinasLasVegas() {
 
     std::cout << std::endl << "Solucion: ";
     escribirSolucion(solucion);
-    
+
     std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
     std::cout << "Intentos: " << trys << std::endl;
 }
