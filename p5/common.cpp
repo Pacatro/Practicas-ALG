@@ -12,15 +12,6 @@ void menu() {
     std::cout << "5. Salir." << std::endl;
 }
 
-bool lugar(int k, std::vector<int> &x) {
-    for(int i = 0; i < k; i++) {
-        if(x[i] == x[k] || std::abs(x[i]-x[k]) == std::abs(i-k))
-            return false;
-    }
-
-    return true;
-}
-
 void escribirSoluciones(std::vector<std::vector<int>> &soluciones) {
     for(int i = 0; i < soluciones.size(); i++) {
         std::cout << "[ ";
@@ -45,7 +36,11 @@ void fillMatrix(std::vector<std::vector<int>> &m) {
     }
 }
 
-void fillVector(std::vector<int> &x) {
+void fillVector(int n, std::vector<std::vector<int>> &X) {
+    std::vector<int> x(n);
+    
     for(int i = 0; i < x.size(); i++)
         x[i] = std::rand() % 2;
+
+    X.push_back(x);
 }

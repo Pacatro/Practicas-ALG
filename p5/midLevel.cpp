@@ -8,12 +8,12 @@
 #include "./headers/ClaseTiempo.hpp"
 
 void nReinasBacktracking() {
-    int n;
+    unsigned int n;
     std::cout << std::endl << "Introduzca el numero de reinas: ";
     std::cin >> n;
 
     if(n <= 0) {
-        std::cerr << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << std::endl << "ERROR: El valor de n deber ser > 0" << std::endl;
         return;
     }
 
@@ -26,18 +26,23 @@ void nReinasBacktracking() {
 
     if(time.isStarted()) time.stop();
 
+    if(soluciones.empty()) {
+        std::cout << std::endl << "No se ha encontrado ninguna solucion para n = " << n << std::endl;
+        return;
+    }
+
     std::cout << std::endl << "Soluciones:" << std::endl;
     escribirSoluciones(soluciones);
     std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }
 
 void nReinasBacktracking2() {
-    int n;
+    unsigned int n;
     std::cout << std::endl << "Introduzca el numero de reinas: ";
     std::cin >> n;
 
     if(n <= 0) {
-        std::cerr << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << std::endl << "ERROR: El valor de n deber ser > 0" << std::endl;
         return;
     }
 
@@ -50,18 +55,23 @@ void nReinasBacktracking2() {
 
     if(time.isStarted()) time.stop();
 
+    if(solucion.empty()) {
+        std::cout << std::endl << "No se ha encontrado ninguna solucion para n = " << n << std::endl;
+        return;
+    }
+
     std::cout << std::endl << "Solucion: ";
     escribirSolucion(solucion);
     std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }
 
 void nReinasLasVegas() {
-    int n;
+    unsigned int n;
     std::cout << std::endl << "Introduzca el numero de reinas: ";
     std::cin >> n;
 
     if(n <= 0) {
-        std::cerr << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << std::endl << "ERROR: El valor de n deber ser > 0" << std::endl;
         return;
     }
 
@@ -79,6 +89,11 @@ void nReinasLasVegas() {
 
     if(time.isStarted()) time.stop();
 
+    if(solucion.empty()) {
+        std::cout << std::endl << "No se ha encontrado ninguna solucion para n = " << n << std::endl;
+        return;
+    }
+
     std::cout << std::endl << "Solucion: ";
     escribirSolucion(solucion);
 
@@ -87,12 +102,12 @@ void nReinasLasVegas() {
 }
 
 void monteCarlo() {
-    int n;
+    unsigned int n;
     std::cout << std::endl << "Introduzca el orden de la matriz: ";
     std::cin >> n;
 
     if(n <= 0) {
-        std::cerr << "El valor de n deber ser > 0" << std::endl;
+        std::cerr << std::endl << "ERROR: El valor de n deber ser > 0" << std::endl;
         return;
     }
 
@@ -113,14 +128,7 @@ void monteCarlo() {
 
     std::cout << std::endl << "Tiempo en calcular el producto: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 
-    randProdMatrix(AB, C);
-
-    std::vector<int> x(n);
-    fillVector(x);
-    
-    std::vector<std::vector<int>> X;
-
-    X.push_back(x);
+    generateC(AB, C);
 
     int tests;
     std::cout << std::endl << "Indique el numero de pruebas a realizar: ";
@@ -131,12 +139,12 @@ void monteCarlo() {
     int nTests;
 
     time.restart();
-    bool success = verifyProd(tests, n, nTests, X, A, B, C);
+    bool success = verifyProdRep(tests, n, nTests, A, B, C);
     if(time.isStarted()) time.stop();
 
     if(success) {
-        double prob = 1 - std::pow(1/2, tests);
-        std::cout << "El producto si se puede verificar, la probabilidad es del: " << prob*100 << "%" << std::endl;
+        double prob = 1.0 - std::pow(0.5, tests);
+        std::cout << "El producto si se puede verificar, la probabilidad es del " << prob*100 << "%" << std::endl;
     } else 
         std::cout << "El producto no se puede verificar, numero de pruebas: " << nTests << std::endl;
 

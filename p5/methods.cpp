@@ -4,6 +4,16 @@
 #include "./headers/methods.hpp"
 #include "./headers/common.hpp"
 
+bool lugar(int k, std::vector<int> &x) {
+    for(int i = 0; i < k; i++) {
+        if(x[i] == x[k] || std::abs(x[i]-x[k]) == std::abs(i-k))
+            return false;
+    }
+
+    return true;
+}
+
+
 void nReinasBacktracking(int n, std::vector<std::vector<int>> &soluciones) {
     std::vector<int> x(n);
     x[0] = -1;
@@ -88,33 +98,41 @@ void prodMatrix(std::vector<std::vector<int>> &A, std::vector<std::vector<int>> 
     }
 }
 
-void randProdMatrix(std::vector<std::vector<int>> AB, std::vector<std::vector<int>> &C) {
+void generateC(std::vector<std::vector<int>> &AB, std::vector<std::vector<int>> &C) {
     int given = (std::rand() % 6) + 1;
 
-    if(given % 2 != 0)
-        AB[AB.size()/2][AB.size()/2]++;
-
     C = AB;
+
+    if(given % 2 != 0) C[AB.size()/2][AB.size()/2]++;
 }
 
-bool verifyProd(int tests, int n, int &nTests, std::vector<std::vector<int>> &X, 
-                                               std::vector<std::vector<int>> &A, 
-                                               std::vector<std::vector<int>> &B, 
-                                               std::vector<std::vector<int>> &C) {    
+bool verifyProd(int n, std::vector<std::vector<int>> &A, std::vector<std::vector<int>> &B, std::vector<std::vector<int>> &C) {    
+    std::vector<std::vector<int>> X;
     std::vector<std::vector<int>> XA(1, std::vector<int>(n));
     std::vector<std::vector<int>> XAB(1, std::vector<int>(n));
     std::vector<std::vector<int>> XC(1, std::vector<int>(n));
+    
+    fillVector(n, X);
     
     prodMatrix(X, A, XA);
     prodMatrix(XA, B, XAB);
     prodMatrix(X, C, XC);
 
-    for(int i = 0; i < tests; i++){
-        if(XAB != XC) {
+    if(XAB == XC)
+        return true;
+    
+    return false;
+}
+
+bool verifyProdRep(int tests, int n, int &nTests, std::vector<std::vector<int>> &A, 
+                                                  std::vector<std::vector<int>> &B, 
+                                                  std::vector<std::vector<int>> &C) {
+    for(int i = 0; i < tests; i++) {
+        if(!verifyProd(n, A, B, C)) {
             nTests = i+1;
             return false;
         }
     }
-    
+
     return true;
 }

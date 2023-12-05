@@ -31,8 +31,12 @@ int main() {
             case 4:
                 monteCarlo();
             break;
-        }
-    } while (opt > 0 && opt != 5);
 
-    return EXIT_SUCCESS;
+            case 5: return EXIT_SUCCESS;
+        }
+
+        if(opt <= 0 || opt > 5)
+            std::cerr << std::endl << "ERROR: La opcion elegida no es válida" << std::endl;
+
+    } while (true);
 }
