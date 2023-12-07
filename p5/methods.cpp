@@ -128,10 +128,9 @@ bool verifyProdRep(int tests, int n, int &nTests, std::vector<std::vector<int>> 
                                                   std::vector<std::vector<int>> &B, 
                                                   std::vector<std::vector<int>> &C) {
     for(int i = 0; i < tests; i++) {
-        if(!verifyProd(n, A, B, C)) {
-            nTests = i+1;
+        nTests = i+1;
+        if(!verifyProd(n, A, B, C))
             return false;
-        }
     }
 
     return true;

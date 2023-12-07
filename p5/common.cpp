@@ -4,10 +4,10 @@
 #include "./headers/common.hpp"
 
 void menu() {
-    std::cout << std::endl << "Elija una implementacion de las nReinas:" << std::endl << std::endl;
-    std::cout << "1. Backtracking con todas las soluciones." << std::endl;
-    std::cout << "2. Backtracking con una solucion." << std::endl;
-    std::cout << "3. Las Vegas." << std::endl;
+    std::cout << std::endl << "Elija una implementacion:" << std::endl << std::endl;
+    std::cout << "1. Backtracking con todas las soluciones (n-reinas)." << std::endl;
+    std::cout << "2. Backtracking con una solucion. (n-reinas)" << std::endl;
+    std::cout << "3. Las Vegas. (n-reinas)" << std::endl;
     std::cout << "4. Verficacion de producto de matrices con Montecarlo." << std::endl;
     std::cout << "5. Salir." << std::endl;
 }

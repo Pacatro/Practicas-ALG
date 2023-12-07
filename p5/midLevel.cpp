@@ -98,7 +98,7 @@ void nReinasLasVegas() {
     escribirSolucion(solucion);
 
     std::cout << std::endl << "Tiempo de ejecucion: " << time.elapsed()*1e-6 << " segundos" << std::endl;
-    std::cout << "Intentos: " << trys << std::endl;
+    std::cout << std::endl << "Intentos: " << trys << std::endl;
 }
 
 void monteCarlo() {
@@ -145,8 +145,11 @@ void monteCarlo() {
     if(success) {
         double prob = 1.0 - std::pow(0.5, tests);
         std::cout << "El producto si se puede verificar, la probabilidad es del " << prob*100 << "%" << std::endl;
-    } else 
-        std::cout << "El producto no se puede verificar, numero de pruebas: " << nTests << std::endl;
+    } else {
+        std::cout << "El producto no se puede verificar" << std::endl;
+    }
+
+    std::cout << std::endl << "Numero de pruebas realizadas: " << nTests << std::endl;
 
     std::cout << std::endl << "Tiempo en verificar el producto: " << time.elapsed()*1e-6 << " segundos" << std::endl;
 }
