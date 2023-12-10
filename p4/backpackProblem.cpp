@@ -8,8 +8,6 @@
 #include "headers/backpackProblem.hpp"
 #include "headers/material.hpp"
 
-// INTERCAMBIAR VOLUMEN Y PRECIO DEL MATERIAL 1 Y 5 PARA PROBAR
-
 void cargarMateriales(std::vector<Material> &materiales, const char *nombreFichero){
     auto nombreFicheroStr = std::string(nombreFichero);
     
