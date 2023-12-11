@@ -30,20 +30,20 @@ void mochila(float volumenMochila, std::vector<Material> &materiales, std::vecto
     for(int i = 0; i < materiales.size(); i++)
         matrizEstados[i][0] = 0;
 
-    for(int j = 0; j <= volumenMochila; j++){
-        if(j < materiales[0].getVolumen())
-            matrizEstados[0][j] = 0;
-        else
-            matrizEstados[0][j] = materiales[0].getPrecio() * materiales[0].getVolumen();
-    }
-
-    for(int i = 1; i < materiales.size(); i++){
-        for(int j = 1; j <= volumenMochila; j++){
-            if(j < materiales[i].getVolumen())
-                matrizEstados[i][j] = matrizEstados[i-1][j];
-            else
-                matrizEstados[i][j] = std::max(matrizEstados[i-1][j], materiales[i].getPrecio() * materiales[i].getVolumen() 
-                                                                      + matrizEstados[i-1][j-materiales[i].getVolumen()]);
+    for(int i = 0; i < materiales.size(); i++) {
+        for(int j = 1; j <= volumenMochila; j++) {
+            if(i == 0) {
+                if(j < materiales[i].getVolumen())
+                    matrizEstados[i][j] = 0;
+                else
+                    matrizEstados[i][j] = materiales[i].getPrecio() * materiales[i].getVolumen();
+            } else {
+                if(j < materiales[i].getVolumen())
+                    matrizEstados[i][j] = matrizEstados[i-1][j];
+                else
+                    matrizEstados[i][j] = std::max(matrizEstados[i-1][j], materiales[i].getPrecio() * materiales[i].getVolumen()
+                                                                          + matrizEstados[i][j-materiales[i].getVolumen()]);
+            }
         }
     }
 }
